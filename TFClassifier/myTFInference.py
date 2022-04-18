@@ -22,7 +22,7 @@ parser.add_argument('--img_height', type=int, default=28,
 parser.add_argument('--img_width', type=int, default=28,
                     help='resize to img width')
 # network
-parser.add_argument('--model_name', default='cnnsimple1', choices=['cnnsimple1', 'cnnsimple2', 'cnnsimple3', 'cnnsimple4','mobilenetmodel1'],
+parser.add_argument('--model_name', default='cnnsimple1', choices=['cnnsimple1', 'cnnsimple2', 'cnnsimple3', 'cnnsimple4','mobilenetmodel1','create_simplemodelChange'],
                     help='the network')
 parser.add_argument('--model_path', type=str, default='./outputs/flower_mobilenetmodel1_0630',
                     help='Model path.')

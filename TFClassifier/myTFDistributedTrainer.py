@@ -28,7 +28,7 @@ parser.add_argument('--data_path', type=str, default='/home/kaikai/.keras/datase
 parser.add_argument('--save_path', type=str, default='./outputs/fashion',
                     help='path to save the model')
 # network
-parser.add_argument('--model_name', default='cnnsimple1', choices=['cnnsimple1', 'cnnsimple2'],
+parser.add_argument('--model_name', default='cnnsimple1', choices=['cnnsimple1', 'cnnsimple2','create_simplemodelChange'],
                     help='the network')
 parser.add_argument('--arch', default='Tensorflow', choices=['Tensorflow', 'Pytorch'],
                     help='Model Name, default: Tensorflow.')

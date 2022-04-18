@@ -15,6 +15,8 @@ def createCNNsimplemodel(name, numclasses, img_shape, metrics=['accuracy']):
         return create_simplemodel3(numclasses, img_shape, metrics)
     elif name=='cnnsimple4':
         return create_simplemodel4(numclasses, img_shape, metrics)
+    elif name=='create_simplemodelChange':
+        return create_simplemodelChange(numclasses, img_shape, metrics)
     elif name=='mobilenetmodel1':
         return create_mobilenetmodel1(numclasses, img_shape, metrics)
     elif name=='mobilenetmodel2':
@@ -30,6 +32,21 @@ def create_simplemodel1(numclasses, img_shape, metrics=['accuracy']):
         tf.keras.layers.MaxPooling2D(),
         tf.keras.layers.Flatten(),
         tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(numclasses)
+    ])
+
+    model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),#integer label not one-hot encoding
+                    optimizer=tf.keras.optimizers.Adam(),
+                    metrics=metrics)
+    return model
+
+def create_simplemodelChange(numclasses, img_shape, metrics=['accuracy']):
+    model = tf.keras.Sequential([
+        tf.keras.layers.Conv2D(
+            32, 3, activation='elu', input_shape=img_shape), #(28, 28, 1)
+        tf.keras.layers.AveragePooling2D(),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(64, activation='elu'),
         tf.keras.layers.Dense(numclasses)
     ])
 
