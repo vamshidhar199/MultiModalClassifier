@@ -23,20 +23,37 @@ def createCNNsimplemodel(name, numclasses, img_shape, metrics=['accuracy']):
         return create_mobilenetmodel2(numclasses, img_shape, metrics)
     elif name=='xceptionmodel1':
         return create_Xceptionmodel1(numclasses, img_shape, metrics)
+    elif name=='create_simplemodelTest1':
+        return create_simplemodelTest1(numclasses, img_shape, metrics)
 
 
 def create_simplemodel1(numclasses, img_shape, metrics=['accuracy']):
     model = tf.keras.Sequential([
         tf.keras.layers.Conv2D(
-            32, 3, activation='relu', input_shape=img_shape), #(28, 28, 1)
+            32, 3, activation='elu', input_shape=img_shape), #(28, 28, 1)
         tf.keras.layers.MaxPooling2D(),
         tf.keras.layers.Flatten(),
-        tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(64, activation='elu'),
         tf.keras.layers.Dense(numclasses)
     ])
 
     model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),#integer label not one-hot encoding
                     optimizer=tf.keras.optimizers.Adam(),
+                    metrics=metrics)
+    return model
+def create_simplemodelTest1(numclasses, img_shape, metrics=['accuracy']):
+    model = tf.keras.Sequential([
+        tf.keras.layers.Conv2D(
+            32, 3, activation='elu', input_shape=img_shape), #(28, 28, 1)
+        tf.keras.layers.MaxPooling2D(),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(64, activation='elu'),
+        tf.keras.layers.Dense(32, activation='elu'),
+        tf.keras.layers.Dense(numclasses)
+    ])
+
+    model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),#integer label not one-hot encoding
+                    optimizer=tf.keras.optimizers.Nadam(),
                     metrics=metrics)
     return model
 
@@ -50,7 +67,7 @@ def create_simplemodelChange(numclasses, img_shape, metrics=['accuracy']):
         tf.keras.layers.Dense(numclasses)
     ])
 
-    model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),#integer label not one-hot encoding
+    model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
                     optimizer=tf.keras.optimizers.Adam(),
                     metrics=metrics)
     return model
