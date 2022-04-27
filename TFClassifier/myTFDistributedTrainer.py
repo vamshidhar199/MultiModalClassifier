@@ -28,7 +28,7 @@ parser.add_argument('--data_path', type=str, default='/home/kaikai/.keras/datase
 parser.add_argument('--save_path', type=str, default='./outputs/fashion',
                     help='path to save the model')
 # network
-parser.add_argument('--model_name', default='cnnsimple1', choices=['cnnsimple1', 'cnnsimple2','create_simplemodelChange','create_simplemodelTest1'],
+parser.add_argument('--model_name', default='cnnsimple1', choices=['cnnsimple1', 'cnnsimple2','create_simplemodelChange','create_simplemodelTest1','create_simplemodelTest2'],
                     help='the network')
 parser.add_argument('--arch', default='Tensorflow', choices=['Tensorflow', 'Pytorch'],
                     help='Model Name, default: Tensorflow.')
@@ -195,6 +195,20 @@ def main():
 
     #Export the graph and the variables to the platform-agnostic SavedModel format. After your model is saved, you can load it with or without the scope.
     model.save(args.save_path, save_format='tf')
+    version = 1
+    export_path = os.path.join(args.save_path, str(version))
+    print('export_path = {}\n'.format(export_path))
+
+    tf.keras.models.save_model(
+            model,
+            export_path,
+            overwrite=True,
+            include_optimizer=True,
+            save_format=None,
+            signatures=None,
+            options=None
+    )
+
 
     eval_loss, eval_acc = model.evaluate(val_ds)
     print('Eval loss: {}, Eval Accuracy: {}'.format(eval_loss, eval_acc))

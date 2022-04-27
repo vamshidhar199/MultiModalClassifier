@@ -57,6 +57,20 @@ def create_simplemodelTest1(numclasses, img_shape, metrics=['accuracy']):
                     metrics=metrics)
     return model
 
+def create_simplemodelTest2(numclasses, img_shape, metrics=['accuracy']):
+    model = keras.Sequential([
+    keras.layers.Conv2D(input_shape=(28,28,1), filters=8, kernel_size=3, 
+                      strides=2, activation='relu', name='Conv1'),
+    keras.layers.Flatten(),
+    keras.layers.Dense(10, name='Dense')
+    ])
+
+    model.compile(optimizer='adam', 
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              metrics=[keras.metrics.SparseCategoricalAccuracy()])
+    return model
+
+
 def create_simplemodelChange(numclasses, img_shape, metrics=['accuracy']):
     model = tf.keras.Sequential([
         tf.keras.layers.Conv2D(
