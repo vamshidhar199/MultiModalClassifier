@@ -25,6 +25,8 @@ def createCNNsimplemodel(name, numclasses, img_shape, metrics=['accuracy']):
         return create_Xceptionmodel1(numclasses, img_shape, metrics)
     elif name=='create_simplemodelTest1':
         return create_simplemodelTest1(numclasses, img_shape, metrics)
+    elif name=='create_simplemodelTest2':
+        return create_simplemodelTest2(numclasses, img_shape, metrics)
 
 
 def create_simplemodel1(numclasses, img_shape, metrics=['accuracy']):
