@@ -39,7 +39,9 @@ Procedure followed to setup the code:
 - - - 3.The restfull API returns the JSON format and from there we need to extract the predictions, this repsonse is generated when we call http://localhost:8501/v1/models/saved_model:predict which will return the result in JSON format.
 - - - 4.class_names[np.argmax(predictions[0])], np.argmax(predictions[0]), class_names[test_labels[0]], test_labels[0]), using this code we get the image out of. the array for predictions.
 - - - 5.apiserving.py is the file whihc contains the necessary code, it has been executed in colab. The model which is saved inside outputs/fashion/1 folder, has been uploaded to my drive and executed the process of the serving by executing the code in colab the predictions are made as follows.
--  
+- - -![alt](https://github.com/vamshidhar199/MultiModalClassifier/blob/main/beforePred.png)
+- - -![alt](https://github.com/vamshidhar199/MultiModalClassifier/blob/main/precitionUsingApi.png)
+
 
 # MultiModalClassifier
 This is a project repo for multi-modal deep learning classifier with popular models from Tensorflow and Pytorch. The goal of these baseline models is to provide a template to build on and can be a starting point for any new ideas, applications. If you want to learn basics of ML and DL, please refer this repo: https://github.com/lkk688/DeepDataMiningLearning.
