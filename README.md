@@ -1,15 +1,16 @@
-# Table of contents
-- 1.RT Inference
-- 2.TF Lite 
-- 3.Serving with REST APIs
+# Table of contents[Options selected]
+- 1. *RT Inference*
+- 2. *TF Lite* 
+- 3. *Serving with REST APIs*
 # Change made to the code.
-Option chosen: TensorRT inference and TensorflowLite inference
+Option chosen: TensorRT inference ,serving with REST APIs and TensorflowLite inference
 Procedure followed to setup the code:
 - 1.Created the virtual environment and ran the command as given in the repo.
 - 2.Installed the required packages as some where not installed while setup process.
 - 3.Had to create the output folder to store the models generated.
 - 4.Made changes to python code to accomodate the training of new model for MNIST data.
 - 5.Executed the code and generated the model and then used the model saved to convert to lite mode and madethe inference and then compared the accuracy and predictions made by the model.Below are some details regarding changes and results.
+- 6.Trained a cnn model and saved so that it can be used for api serving and then uploaded that model to the drive and used colab to execute the code present in apiserving.py file and then used the end point http://localhost:8501/v1/models/saved_model:predict to predict the image and th model redicted the image class exactly. More details in below sections.
 # Changes made at CNNsimplemodels.py, myTFInference.py, exportTFlite.py
 ## 1.RT Inference
 - - Trained with Fashion MNIST model.
